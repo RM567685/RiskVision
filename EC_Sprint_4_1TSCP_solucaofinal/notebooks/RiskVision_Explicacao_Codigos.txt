@@ -1,0 +1,32 @@
+RISKVISION — EXPLICAÇÃO DOS CÓDIGOS
+
+1. O código lê o dataset_analitico.csv gerado na etapa anterior.
+
+2. Os nomes das colunas são padronizados para minúsculas e os valores nulos são preenchidos com 0.
+
+3. As variáveis usadas no score são:
+- media_atraso
+- taxa_atraso
+- indicador_liquidez_quantitativo_3m
+- valor_total
+
+4. O MinMaxScaler normaliza todas as variáveis para a escala de 0 a 1.
+
+5. Para atraso médio e taxa de atraso, a escala é invertida, porque menor atraso representa melhor comportamento financeiro.
+
+6. O score de risco é calculado com pesos:
+- 35% média de atraso
+- 35% taxa de atraso
+- 20% liquidez
+- 10% valor total
+
+7. A classificação usa cortes fixos:
+- A para score maior ou igual a 75
+- B para score maior ou igual a 50 e menor que 75
+- C para score menor que 50
+
+8. Os alertas analíticos identificam atraso extremo, inadimplência, concentração financeira e risco crítico.
+
+9. O score ESG é sintético e serve apenas para demonstração do MVP.
+
+10. A explicabilidade gera frases automáticas para justificar o nível de risco no Power BI.
