@@ -1,0 +1,48 @@
+RISKVISION — DOCUMENTAÇÃO DA PARTE 2
+
+OBJETIVO
+Desenvolver um modelo analítico para classificação de risco no mercado de FIDCs.
+
+ARQUIVO PRINCIPAL
+RiskVision_Dataset_Final.csv
+
+VARIÁVEIS UTILIZADAS
+- media_atraso
+- taxa_atraso
+- indicador_liquidez_quantitativo_3m
+- valor_total
+
+NORMALIZAÇÃO
+As variáveis foram normalizadas com MinMaxScaler para ficarem em escala comparável.
+
+REGRA DO SCORE
+score_risco = 
+(media_atraso_normalizado * 35%) +
+(taxa_atraso_normalizada * 35%) +
+(liquidez_normalizada * 20%) +
+(valor_total_normalizado * 10%)
+
+Para media_atraso e taxa_atraso foi usada lógica invertida, pois menor atraso significa menor risco.
+
+CLASSIFICAÇÃO FINAL
+A = score_risco >= 75
+B = score_risco >= 50 e < 75
+C = score_risco < 50
+
+DISTRIBUIÇÃO FINAL
+A = 1043
+B = 1802
+C = 680
+
+ALERTAS ANALÍTICOS
+- ALERTA_ATRASO_EXTREMO
+- ALERTA_INADIMPLENCIA
+- ALERTA_CONCENTRACAO_FINANCEIRA
+- ALERTA_RISCO_CRITICO
+- NORMAL
+
+ESG
+O score_esg é um indicador sintético para demonstração do MVP. Não deve ser apresentado como ESG real.
+
+EXPLICABILIDADE
+A coluna explicabilidade gera uma justificativa textual executiva para apoiar leitura do risco no dashboard.
